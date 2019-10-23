@@ -4,7 +4,7 @@ from zope.interface import implementer
 from scrapyd.interfaces import IPoller
 from scrapyd import poller
 
-from scrapyd_mongodb.utils import get_spider_queues
+from scrapyd_redis.utils import get_spider_queues
 
 
 @implementer(IPoller)

@@ -14,8 +14,8 @@ from scrapyd.eggstorage import FilesystemEggStorage
 from scrapyd.environ import Environment
 from scrapyd.website import Root
 
-from scrapyd_mongodb.poller import QueuePoller
-from scrapyd_mongodb.scheduler import SpiderScheduler
+from scrapyd_redis.poller import QueuePoller
+from scrapyd_redis.scheduler import SpiderScheduler
 
 
 def get_application(config):
@@ -34,11 +34,12 @@ def get_application(config):
     app.setComponent(ISpiderScheduler, scheduler)
     app.setComponent(IEnvironment, environment)
 
-    laupath = config.get('launcher', 'scrapyd_mongodb.launcher.Launcher')
+    laupath = config.get('launcher', 'scrapyd_redis.launcher.Launcher')
     laucls = load_object(laupath)
     launcher = laucls(config, app)
 
     timer = TimerService(poll_interval, poller.poll)
+
     webservice = TCPServer(
         http_port, server.Site(Root(config, app)),
         interface=bind_address)

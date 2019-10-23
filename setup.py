@@ -4,21 +4,20 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='scrapyd-mongodb',
+    name='scrapyd-redis',
     version='0.1.1',
-    description='Scrapyd Queue Management with MongoDB',
+    description='Scrapyd Queue Management with Redis',
     author='Tiago Lira',
     author_email='tiagolira.dev@gmail.com',
     license='MIT',
-    url='https://github.com/Tiago-Lira/scrapyd-mongodb',
-    download_url='https://github.com/Tiago-Lira/scrapyd-mongodb/tarball/0.1.1',
-    keywords=['scrapy', 'scrapyd', 'mongodb', 'queue',
+    url='https://github.com/speakol-ads/scrapyd-redis',
+    keywords=['scrapy', 'scrapyd', 'redis', 'queue',
               'scrapyd-queue', 'scrapyd-backend', 'backend'],
     include_package_data=True,
     packages=find_packages(),
     install_requires=[
         'scrapy',
-        'pymongo',
+        'redis==3.3.1',
     ],
     classifiers=[],
 )
