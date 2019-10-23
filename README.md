@@ -1,23 +1,18 @@
 
-# Scrapyd-mongodb
-[![PyPI version](https://badge.fury.io/py/scrapyd-mongodb.svg)](https://badge.fury.io/py/scrapyd-mongodb)
-
+# Scrapyd Redis
 Scrapyd is a fantastic open-source library for management of crawlers using scrapy-framework.
 However, the builtin queue management is implemented to work using SQLite which ends up being a problem when we need to scale.
 
-This library is designed to replace the SQLite backend by a MongoDB backend. In other words, all
-the queue management will be done using MongoDB.
+This library is designed to replace the SQLite backend by a Redis backend. In other words, all
+the queue management will be done using Redis.
 
+This library is a fork of the original [https://github.com/Tiago-Lira/scrapyd-mongodb](mongo) implementation 
 
 ## Install
 
-You need to have MongoDB installed before using this library. The documentation to install it can be found at: https://docs.mongodb.org/manual/installation/
-
-`scrapyd-mongo` is available at pypi:
-
 ```bash
 
-$ pip install scrapyd-mongodb
+$ pip install git+https://github.com/speakol-ads/scrapyd-redis.git
 
 ```
 
@@ -27,7 +22,7 @@ To start using this library you just need to override the `application` option i
 ```cfg
 
 [scrapyd]
-application = scrapyd_mongodb.application.get_application
+application = scrapyd_redis.application.get_application
 ...
 
 ```
@@ -36,17 +31,11 @@ If you want to customize the access to the database, you can add into your `scra
 
 ```cfg
 [scrapyd]
-mongodb_name = scrapyd_mongodb
-mongodb_host = 127.0.0.1
-mongodb_port = 27017
-mongodb_user = custom_user  # (Optional)
-mongodb_pass = custompwd  # (Optional)
+redis_db = 13
+redis_host = 127.0.0.1
+redis_port = 6379
+redis_pass =   # (Optional)
 ...
 
 ```
 
-
-## Contributing
-
-Having trouble? have suggestions?  
-Report bugs or suggestions on the issue tracker.
