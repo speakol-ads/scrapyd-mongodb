@@ -17,7 +17,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'scrapy',
-        'redis==3.3.1',
+        'redis',
     ],
     classifiers=[],
 )
